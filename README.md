@@ -144,7 +144,7 @@ SSH instructions
 
 Connect via SSH:
 
-    ssh root@your_droplet_ip
+    ssh admin@my_droplet_ip
 
 🔸 [EXERCISE 3: Prepare server to run Node App:]
 
@@ -152,13 +152,40 @@ Now you have a new fresh server nothing installed on it. Because you want to run
 
 Install nodejs & npm on it
 
+    sudo apt get -y nodejs npm    
+
 🔸 [EXERCISE 4: Copy App:]
 Having everything prepared for the application, you finally:
 
 Copy your simple Nodejs app to the droplet
 
+    scp bootcamp-node-project-1.0.0.tgz admin@167.172.125.11:/admin
+    
+
 🔸 [EXERCISE 5: Run Node App:]
 Start the node application in detached mode (npm install and node server.js commands)
+
+    tar -zxvf bootcamp-node-project-1.0.0.tgz
+    cd package
+    npm install
+    nohup node server.js > app.log 2>&1 &
+
+Explanation:
+
+    nohup — keeps the process running even after you disconnect from SSH
+    > app.log 2>&1 — writes the output and errors into a log file
+    & — runs the command in the background
+
+Check running processes:
+
+    ps aux | grep node
+
+
+Stop the Node.js process:
+
+    pkill node
+
+
 
 
 🔸 [EXERCISE 6: Access from browser - configure firewall]
