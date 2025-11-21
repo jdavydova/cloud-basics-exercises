@@ -186,10 +186,11 @@ Stop the Node.js process:
     pkill node
 
 
-
-
 🔸 [EXERCISE 6: Access from browser - configure firewall]
 You see that the application is not accessible through the browser, because all ports are closed on the server. So you:
 
 Open the correct port on Droplet
 and access the UI from browser
+
+<img width="1216" height="394" alt="Screenshot 2025-11-21 at 11 08 00 AM" src="https://github.com/user-attachments/assets/9704703a-b0fd-48b1-9db5-1bf71be488f0" />
+
