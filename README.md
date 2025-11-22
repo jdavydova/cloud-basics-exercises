@@ -196,3 +196,47 @@ and access the UI from browser
 
 <img width="862" height="623" alt="Screenshot 2025-11-21 at 10 50 35 AM" src="https://github.com/user-attachments/assets/96321ae7-ac35-43ff-b9b2-fe7a9cbde5cc" />
 
+## Exercises for Module "Artifact Repository Manager with Nexus"
+
+You and other teams in 2 different projects in your company see that they have many different small projects, including the NodeJS application you built in the previous step, the java-gradle helper application and so on. You discuss and decide it would be a good idea to be able to keep all these app artifacts in 1 place, where each team can keep their app artifacts and can access them when they need.
+
+So they ask you to setup Nexus in the company and create repositories for 2 different projects.
+
+🔸 [EXERCISE 1: Install Nexus on a server]
+
+If you already followed the demo in the Nexus module for installing Nexus, then you can use that one.
+
+If not, you can watch the module demo video to install Nexus.
+
+    sudo apt install openjdk-17-jre-headless
+    java -version
+    cd /opt
+    wget https://download.sonatype.com/nexus/3/nexus-3.86.2-01-linux-x86_64.tar.gzc
+    tar -zxvf nexus-3.86.2-01-linux-x86_64.tar.gz
+    sudo adduser nexus
+    sudo chown -R nexus:nexus nexus-3.86.2-01
+    sudo chown -R nexus:nexus sonatype-work
+    sudo vim nexus-3.86.2-01/bin/nexus.rc
+    
+        run_as_user="nexus"
+    
+    su - nexus
+    /opt/nexus-3.86.2-01/bin/nexus start
+    ps aux | grep nexus
+
+<img width="1205" height="74" alt="Screenshot 2025-11-22 at 10 27 53 AM" src="https://github.com/user-attachments/assets/44d607f6-121f-453f-b7bf-5da8bb0f0ece" />
+
+<img width="864" height="319" alt="Screenshot 2025-11-22 at 10 28 53 AM" src="https://github.com/user-attachments/assets/a457ba29-b4b9-498b-81ad-09127545d0fb" />
+
+Login by admin user with password:
+
+    cat /opt/sonatype-work/nexus3/admin.password
+
+🔸 [EXERCISE 2: Create npm hosted repository]
+For a Node application you:
+
+create a new npm hosted repository with a new blob store
+
+
+
+
