@@ -211,8 +211,8 @@ If not, you can watch the module demo video to install Nexus.
     sudo apt install openjdk-17-jre-headless
     java -version
     cd /opt
-    wget https://download.sonatype.com/nexus/3/nexus-3.86.2-01-linux-x86_64.tar.gz
-    tar -zxvf nexus-3.86.2-01-linux-x86_64.tar.gz
+    sudo wget https://download.sonatype.com/nexus/3/nexus-3.86.2-01-linux-x86_64.tar.gz
+    sudo tar -zxvf nexus-3.86.2-01-linux-x86_64.tar.gz
     sudo adduser nexus
     sudo chown -R nexus:nexus nexus-3.86.2-01
     sudo chown -R nexus:nexus sonatype-work
@@ -223,6 +223,7 @@ If not, you can watch the module demo video to install Nexus.
     su - nexus
     /opt/nexus-3.86.2-01/bin/nexus start
     ps aux | grep nexus
+<img width="709" height="309" alt="Screenshot 2025-11-24 at 11 09 42 AM" src="https://github.com/user-attachments/assets/fab0cc9f-f33a-4a0e-9267-c02b4e853831" />
 
 <img width="1205" height="74" alt="Screenshot 2025-11-22 at 10 27 53 AM" src="https://github.com/user-attachments/assets/44d607f6-121f-453f-b7bf-5da8bb0f0ece" />
 
@@ -235,15 +236,24 @@ Login by admin user with password:
 🔸 [EXERCISE 2: Create npm hosted repository]
 For a Node application you:
 
-create a new npm hosted repository with a new blob store
+- Create new blob store:
 
-<img width="1350" height="700" alt="Screenshot 2025-11-22 at 10 38 33 AM" src="https://github.com/user-attachments/assets/385c1605-9603-49e6-8495-0ff487c2041b" />
+<img width="1436" height="797" alt="Screenshot 2025-11-24 at 11 17 17 AM" src="https://github.com/user-attachments/assets/9ffa8e4f-b695-4b5c-82bd-aeef7c022dc9" />
 
-<img width="996" height="728" alt="Screenshot 2025-11-22 at 10 41 37 AM" src="https://github.com/user-attachments/assets/9702c16c-7d08-4fd5-9aee-22a7cacde1c9" />
+- Create a new npm hosted repository with a new blob store:
+
+
+<img width="875" height="773" alt="Screenshot 2025-11-24 at 11 20 13 AM" src="https://github.com/user-attachments/assets/927bb376-9d1f-4973-8f8f-8415ebffa1f4" />
 
 🔸 [EXERCISE 3: Create user for team 1]
 You create Nexus user for the project 1 team to have access to this npm repository
+- Create a new role:
+  
+<img width="878" height="819" alt="Screenshot 2025-11-24 at 11 28 53 AM" src="https://github.com/user-attachments/assets/5f518822-a464-45c7-b734-a2abac29b423" />
 
+- Create a new user with a new role:
+
+<img width="854" height="725" alt="Screenshot 2025-11-24 at 11 32 12 AM" src="https://github.com/user-attachments/assets/794f31e3-e9bf-44b2-ba05-c6309497979e" />
 
 
 
