@@ -211,7 +211,7 @@ If not, you can watch the module demo video to install Nexus.
     sudo apt install openjdk-17-jre-headless
     java -version
     cd /opt
-    wget https://download.sonatype.com/nexus/3/nexus-3.86.2-01-linux-x86_64.tar.gzc
+    wget https://download.sonatype.com/nexus/3/nexus-3.86.2-01-linux-x86_64.tar.gz
     tar -zxvf nexus-3.86.2-01-linux-x86_64.tar.gz
     sudo adduser nexus
     sudo chown -R nexus:nexus nexus-3.86.2-01
