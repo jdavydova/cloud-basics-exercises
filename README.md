@@ -237,6 +237,13 @@ For a Node application you:
 
 create a new npm hosted repository with a new blob store
 
+<img width="1350" height="700" alt="Screenshot 2025-11-22 at 10 38 33 AM" src="https://github.com/user-attachments/assets/385c1605-9603-49e6-8495-0ff487c2041b" />
+
+<img width="996" height="728" alt="Screenshot 2025-11-22 at 10 41 37 AM" src="https://github.com/user-attachments/assets/9702c16c-7d08-4fd5-9aee-22a7cacde1c9" />
+
+🔸 [EXERCISE 3: Create user for team 1]
+You create Nexus user for the project 1 team to have access to this npm repository
+
 
 
 
