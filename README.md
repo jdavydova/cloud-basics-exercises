@@ -409,6 +409,11 @@ Use the java-app application from the Build Tools module
     repoUser=user_two
     repoPassword=user123
 
+## And Run:
+
+    gradle clean build
+    gradle publish  
+
 <img width="706" height="621" alt="Screenshot 2025-11-26 at 10 38 39 AM" src="https://github.com/user-attachments/assets/8c82feb2-c323-469f-9c36-6aa192d7b76a" />
 
 
