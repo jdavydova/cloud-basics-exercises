@@ -345,8 +345,7 @@ Note: --auth-type=legacy is required because newer npm versions default to web-b
 Check authentication:
 
 npm whoami --registry=http://167.172.125.11:8081/repository/my-repo1/
-# should output: admin (or your user)
-
+### should output: admin (or your user)
 
 Then publish:
 
@@ -355,3 +354,53 @@ Then publish:
 
 
 After enabling Npm Bearer Token Realm, the 401 error disappeared and publishing works correctly.
+
+🔸 [EXERCISE 5: Create maven hosted repository]
+For a Java application you:
+
+create a new maven hosted repository
+
+<img width="1065" height="727" alt="Screenshot 2025-11-25 at 9 51 56 AM" src="https://github.com/user-attachments/assets/61de0411-167f-40f3-9e0c-e9e3caa70add" />
+
+🔸 [EXERCISE 6: Create user for team 2]
+
+You create a Nexus user for project 2 team to have access to this maven repository
+
+<img width="826" height="650" alt="Screenshot 2025-11-26 at 9 57 22 AM" src="https://github.com/user-attachments/assets/84821b84-d366-4d72-84a9-00ef9f9c1a2a" />
+
+### added to build.gradle
+
+    group 'com.example'
+    version '1.0.0'
+    sourceCompatibility = 17
+
+    apply plugin: 'maven-publish'
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+            }
+        }
+
+        repositories {
+            maven {
+                name = "nexus"
+                url = "http://167.172.125.11:8081/repository/my-repo2/"
+                allowInsecureProtocol = true
+                credentials {
+                    username project.repoUser
+                    password project.repoPassword
+                }
+            }
+        }
+    }
+
+### added gradle.properties
+
+    repoUser=user_two
+    repoPassword=user123
+
+<img width="1454" height="478" alt="Screenshot 2025-11-26 at 9 54 24 AM" src="https://github.com/user-attachments/assets/04b1354d-8902-4201-81d3-d1182dfe8cb6" />
+
+
