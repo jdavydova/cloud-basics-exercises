@@ -368,6 +368,12 @@ You create a Nexus user for project 2 team to have access to this maven reposito
 
 <img width="826" height="650" alt="Screenshot 2025-11-26 at 9 57 22 AM" src="https://github.com/user-attachments/assets/84821b84-d366-4d72-84a9-00ef9f9c1a2a" />
 
+🔸 [EXERCISE 7: Build and publish jar file]
+You want to test that the project 2 user has the correct access configured and also upload the first version. So:
+
+build and publish the jar file to the new repository using the team 2 user.
+Use the java-app application from the Build Tools module
+
 ### added to build.gradle
 
     group 'com.example'
@@ -379,7 +385,9 @@ You create a Nexus user for project 2 team to have access to this maven reposito
     publishing {
         publications {
             mavenJava(MavenPublication) {
-                from components.java
+                artifact("build/libs/${project.name}-$version" + ".jar"){
+                    extension 'jar'
+                }
             }
         }
 
@@ -401,6 +409,6 @@ You create a Nexus user for project 2 team to have access to this maven reposito
     repoUser=user_two
     repoPassword=user123
 
-<img width="1454" height="478" alt="Screenshot 2025-11-26 at 9 54 24 AM" src="https://github.com/user-attachments/assets/04b1354d-8902-4201-81d3-d1182dfe8cb6" />
+<img width="706" height="621" alt="Screenshot 2025-11-26 at 10 38 39 AM" src="https://github.com/user-attachments/assets/8c82feb2-c323-469f-9c36-6aa192d7b76a" />
 
 
