@@ -423,6 +423,10 @@ On a digital ocean droplet, using Nexus Rest API, fetch the download URL info fo
 Execute a command to fetch the latest artifact itself with the download URL
 Run it on the server!
 
+Created new user
+
+<img width="834" height="701" alt="Screenshot 2025-11-27 at 10 26 19 AM" src="https://github.com/user-attachments/assets/4d9d3f68-a6cb-4fe5-bc3e-f96f2f616088" />
+
 Used the Nexus REST API to get the latest artifact:
 
     LATEST_URL=$(curl -s -u droplet_user:user123 \
