@@ -416,4 +416,24 @@ Use the java-app application from the Build Tools module
 
 <img width="706" height="621" alt="Screenshot 2025-11-26 at 10 38 39 AM" src="https://github.com/user-attachments/assets/8c82feb2-c323-469f-9c36-6aa192d7b76a" />
 
+🔸 [EXERCISE 8: Download from Nexus and start application]
+
+Create new user for droplet server that has access to both repositories
+On a digital ocean droplet, using Nexus Rest API, fetch the download URL info for the latest NodeJS app artifact
+Execute a command to fetch the latest artifact itself with the download URL
+Run it on the server!
+
+    LATEST_URL=$(curl -s -u droplet_user:user123 \
+       "http://167.172.125.11:8081/service/rest/v1/components?repository=my-repo1&name=nodejs-app&sort=version&direction=desc" \
+       | jq -r '.items[0].assets[0].downloadUrl')
+
+    echo "$LATEST_URL"
+    curl -u droplet_user:user123 -L "$LATEST_URL" -o nodejs-app.tgz
+    mkdir nodejs-app
+    tar -xzf nodejs-app.tgz -C nodejs-app --strip-components=1
+    cd nodejs-app
+    npm install
+    node app/server.js
+
+<img width="882" height="393" alt="Screenshot 2025-11-28 at 9 38 27 AM" src="https://github.com/user-attachments/assets/7ee0b1d8-801d-438d-8c49-1f11170c7e67" />
 
