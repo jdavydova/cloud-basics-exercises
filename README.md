@@ -453,3 +453,41 @@ Installed dependencies from the public npm registry and started the app
     nohup node app/server.js > app.log 2>&1 &
     ps aux | grep node
     tail -f app.log
+
+🔸 [EXERCISE 9: Automate]
+
+You decide to automate the fetching from Nexus and starting the application So you:
+
+Write a script that fetches the latest version from npm repository. Untar it and run on the server!
+Execute the script on the droplet
+
+    vim deploy-java.sh
+
+    #!/bin/bash
+
+NEXUS_URL="http://167.172.125.11:8081"
+REPO="my-repo2"
+PACKAGE="my-app"
+USER="droplet_user"
+PASS="user123"
+
+echo "=== Fetching latest JAR from Nexus ==="
+
+LATEST_JAR_URL=$(curl -s -u $USER:$PASS \
+  "$NEXUS_URL/service/rest/v1/search?repository=$REPO&name=$PACKAGE&sort=version&direction=desc" \
+  | jq -r '.items[0].assets[] | select(.path | endswith(".jar")) | .downloadUrl')
+
+echo "Latest JAR: $LATEST_JAR_URL"
+
+echo "=== Downloading JAR ==="
+curl -u $USER:$PASS -L "$LATEST_JAR_URL" -o ${PACKAGE}.jar
+
+echo "=== Stopping old Java processes ==="
+pkill -f ${PACKAGE}.jar || true
+
+echo "=== Starting new version ==="
+nohup java -jar ${PACKAGE}.jar > java-app.log 2>&1 &
+
+echo "Deployment complete!"
+
+
