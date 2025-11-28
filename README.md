@@ -423,17 +423,29 @@ On a digital ocean droplet, using Nexus Rest API, fetch the download URL info fo
 Execute a command to fetch the latest artifact itself with the download URL
 Run it on the server!
 
+Used the Nexus REST API to get the latest artifact:
+
     LATEST_URL=$(curl -s -u droplet_user:user123 \
        "http://167.172.125.11:8081/service/rest/v1/components?repository=my-repo1&name=nodejs-app&sort=version&direction=desc" \
        | jq -r '.items[0].assets[0].downloadUrl')
 
     echo "$LATEST_URL"
+
+Downloaded the artifact on the droplet:
+
     curl -u droplet_user:user123 -L "$LATEST_URL" -o nodejs-app.tgz
     mkdir nodejs-app
     tar -xzf nodejs-app.tgz -C nodejs-app --strip-components=1
     cd nodejs-app
-    npm install
+    
+Installed dependencies from the public npm registry and started the app
+
+    npm install --registry=https://registry.npmjs.org/
     node app/server.js
 
 <img width="882" height="393" alt="Screenshot 2025-11-28 at 9 38 27 AM" src="https://github.com/user-attachments/assets/7ee0b1d8-801d-438d-8c49-1f11170c7e67" />
 
+
+    nohup node app/server.js > app.log 2>&1 &
+    ps aux | grep node
+    tail -f app.log
