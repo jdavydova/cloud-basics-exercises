@@ -465,29 +465,27 @@ Execute the script on the droplet
 
     #!/bin/bash
 
-NEXUS_URL="http://167.172.125.11:8081"
-REPO="my-repo2"
-PACKAGE="my-app"
-USER="droplet_user"
-PASS="user123"
+    NEXUS_URL="http://167.172.125.11:8081"
+    REPO="my-repo2"
+    PACKAGE="my-app"
+    USER="droplet_user"
+    PASS="user123"
 
-echo "=== Fetching latest JAR from Nexus ==="
+    echo "=== Fetching latest JAR from Nexus ==="
 
-LATEST_JAR_URL=$(curl -s -u $USER:$PASS \
-  "$NEXUS_URL/service/rest/v1/search?repository=$REPO&name=$PACKAGE&sort=version&direction=desc" \
-  | jq -r '.items[0].assets[] | select(.path | endswith(".jar")) | .downloadUrl')
+    LATEST_JAR_URL=$(curl -s -u $USER:$PASS \
+      "$NEXUS_URL/service/rest/v1/search?repository=$REPO&name=$PACKAGE&sort=version&direction=desc" \
+      | jq -r '.items[0].assets[] | select(.path | endswith(".jar")) | .downloadUrl')
 
-echo "Latest JAR: $LATEST_JAR_URL"
+    echo "Latest JAR: $LATEST_JAR_URL"
 
-echo "=== Downloading JAR ==="
-curl -u $USER:$PASS -L "$LATEST_JAR_URL" -o ${PACKAGE}.jar
+    echo "=== Downloading JAR ==="
+    curl -u $USER:$PASS -L "$LATEST_JAR_URL" -o ${PACKAGE}.jar
 
-echo "=== Stopping old Java processes ==="
-pkill -f ${PACKAGE}.jar || true
+    echo "=== Stopping old Java processes ==="
+    pkill -f ${PACKAGE}.jar || true
 
-echo "=== Starting new version ==="
-nohup java -jar ${PACKAGE}.jar > java-app.log 2>&1 &
+    echo "=== Starting new version ==="
+    nohup java -jar ${PACKAGE}.jar > java-app.log 2>&1 &
 
-echo "Deployment complete!"
-
-
+    echo "Deployment complete!"
