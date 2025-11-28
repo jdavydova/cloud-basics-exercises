@@ -489,3 +489,14 @@ Execute the script on the droplet
     nohup java -jar ${PACKAGE}.jar > java-app.log 2>&1 &
 
     echo "Deployment complete!"
+
+Make executable:
+
+    chmod +x deploy-java.sh
+
+Run:
+
+    ./deploy-java.sh
+
+<img width="883" height="394" alt="Screenshot 2025-11-28 at 9 59 03 AM" src="https://github.com/user-attachments/assets/c3859aa3-38cf-4d68-9ad2-a2a060fcde50" />
+
